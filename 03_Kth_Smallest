@@ -1,0 +1,22 @@
+class Solution {
+  public:
+    // arr : given array
+    // k : find kth smallest element and return using this function
+    int kthSmallest(vector<int> &arr, int k) {
+        // code here
+         priority_queue<int> maxHeap;
+
+    for (int num : arr) {
+        maxHeap.push(num);
+
+        // Keep only k elements in the heap
+        if (maxHeap.size() > k) {
+            maxHeap.pop();
+        }
+    }
+
+    // The top of the max-heap is the k-th smallest
+    return maxHeap.top();
+        
+    }
+};
