@@ -1,0 +1,21 @@
+#include <bits/stdc++.h> 
+vector<int> separateNegativeAndPositive(vector<int> &nums){
+    // Write your code here.
+   vector<int> negatives, positives;
+
+    for (int num : nums) {
+        if (num < 0)
+            negatives.push_back(num);
+        else
+            positives.push_back(num);
+    }
+
+    // Merge negatives and positives back
+    nums.clear();
+    nums.insert(nums.end(), negatives.begin(), negatives.end());
+    nums.insert(nums.end(), positives.begin(), positives.end());
+
+    return nums;
+}
+//T.C:O(n)
+//S.C:O(n)[because two other vectors are used for storing the elements]
