@@ -1,0 +1,39 @@
+Input: arr[] = [1, 3, 5, 8, 9, 2, 6, 7, 6, 8, 9]
+Output: 3 
+Explanation: First jump from 1st element to 2nd element with value 3. From here we jump to 5th element with value 9, and from here we will jump to the last.
+
+class Solution {
+  public:
+    int minJumps(vector<int>& arr) {
+        // code here
+        
+        
+        int n = arr.size();
+        if (n <= 1) return 0;          // No jump needed if at the end
+        if (arr[0] == 0) return -1;    // Can't move forward
+
+        int jumps = 1;        // At least one jump needed
+        int farthest = arr[0];
+        int currentEnd = arr[0];
+
+        for (int i = 1; i < n; i++) {
+            if (i == n - 1) return jumps; // Reached the end
+
+            farthest = max(farthest, i + arr[i]);
+
+            if (i == currentEnd) {
+                jumps++;
+                currentEnd = farthest;
+                
+
+                    
+                    if (currentEnd <= i) return -1; // Can't move forward for this ex: arr = [1, 0, 0, 0]
+
+            }
+        }
+
+        return -1;
+}
+};
+TC:O(n);
+SC:O(1);
