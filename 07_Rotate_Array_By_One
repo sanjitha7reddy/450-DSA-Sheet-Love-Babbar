@@ -1,0 +1,19 @@
+class Solution {
+  public:
+    void rotate(vector<int> &arr) {
+        // code here
+        int n=arr.size()-1;
+        int s=0;
+        int x=arr[n];
+        int j=n;
+        int i=n-1;
+        while(i>=0 && j>0){
+            arr[j]=arr[i];
+            j--;
+            i--;
+        }
+        arr[s]=x;
+    }
+};
+//T.C:O(n)
+//S.C:O(1)
