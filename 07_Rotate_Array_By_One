@@ -17,3 +17,36 @@ class Solution {
 };
 //T.C:O(n)
 //S.C:O(1)
+
+'arr '= [1,2,3,4,5]
+'k' = 1  rotated array = [2,3,4,5,1]
+'k' = 2  rotated array = [3,4,5,1,2]
+'k' = 3  rotated array = [4,5,1,2,3] and so on.
+#include <vector>
+#include <algorithm>
+using namespace std;
+
+void reverse(vector<int>& arr, int start, int end) {
+    while (start < end) {
+        swap(arr[start], arr[end]);
+        start++;
+        end--;
+    }
+}
+
+vector<int> rotateArray(vector<int> arr, int k) {
+    int n = arr.size();
+    k = k % n; // Handle cases when k >= n
+
+    // Step 1: Reverse first k elements
+    reverse(arr, 0, k - 1);
+
+    // Step 2: Reverse remaining elements
+    reverse(arr, k, n - 1);
+
+    // Step 3: Reverse the whole array
+    reverse(arr, 0, n - 1);
+
+    return arr;
+}
+
