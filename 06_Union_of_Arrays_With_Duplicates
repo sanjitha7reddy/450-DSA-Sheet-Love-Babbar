@@ -16,3 +16,6 @@ class Solution {
 
 //T.C:O(m+n)
 //S.c:O(m+n)
+
+// to find intersection
+//a.size()+b.size()-element_set.size()
