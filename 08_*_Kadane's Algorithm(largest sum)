@@ -1,0 +1,40 @@
+//the below code returns 0 when the in case of all negative numbers
+long long maxSubarraySum(vector<int> arr, int n)
+{
+     long currentsum=0,maxsum=0;
+
+    for(long i:arr)
+    {
+
+        currentsum+=i;
+
+        if(currentsum>maxsum)
+
+        maxsum=currentsum;
+
+        if(currentsum<=0)
+
+        currentsum=0;
+
+    }
+
+    return maxsum;
+}
+TC:O(n)
+SC:O(1)
+
+// return the least -ve num in this case
+
+int maxSubarraySum(vector<int> &arr) {
+    int maxSoFar = arr[0];
+    int maxEndingHere = arr[0];
+
+    for (int i = 1; i < arr.size(); i++) {
+        maxEndingHere = max(arr[i], maxEndingHere + arr[i]);
+        maxSoFar = max(maxSoFar, maxEndingHere);
+    }
+
+    return maxSoFar;  // this ensures 0 if all negatives
+
+
+    }
