@@ -1,0 +1,27 @@
+class Solution {
+  public:
+    vector<vector<int>> getPairs(vector<int>& arr) {
+        // code here
+        unordered_set<int>seen; /// takes O(1) to perform operation
+        set<pair<int,int>>unique_pairs;// takes O(log k) where k r unique pairs
+        for(int num: arr){
+            
+            if(seen.count(-num)){
+                int first=min(num,-num);
+                int second=max(num,-num);
+                unique_pairs.insert({first,second});
+            }
+            seen.insert(num);
+            
+        }
+        vector<vector<int>> result;
+        for (auto& p : unique_pairs) {
+        result.push_back({p.first, p.second});//O(k) time
+  }
+        return result;
+
+    }
+};
+
+tc:O(n logn);
+SC:O(n);
