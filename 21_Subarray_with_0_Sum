@@ -1,0 +1,32 @@
+Input: arr[] = [4, 2, -3, 1, 6]
+Output: true
+Explanation: 2, -3, 1 is the subarray with a sum of 0.
+
+
+class Solution {
+  public:
+    // Complete this function
+    // Function to check whether there is a subarray present with 0-sum or not.
+    bool subArrayExists(vector<int>& arr) {
+        // Your code here
+        int sum=0;
+        //you could use a map too
+        unordered_set<int>hashmap;
+        for(int i=0;i<arr.size();i++){
+            sum=sum+arr[i];
+            if(sum==0) return true;
+            if(hashmap.find(sum)!=hashmap.end()){
+                return true;
+            }
+            else{
+                //in case u did use a hashmap it would be hashmap.insert({sum,1})
+                hashmap.insert(sum);
+            }
+        }
+        return false;
+        
+    }
+};
+
+TC:O(n);
+SC:O(n);
