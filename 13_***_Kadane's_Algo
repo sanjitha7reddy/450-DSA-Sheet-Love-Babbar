@@ -6,7 +6,7 @@ class Solution {
   public:
     int maxSubarraySum(vector<int> &arr) {
     int maxSoFar = arr[0];
-    int maxEndingHere = arr[0];
+    int maxEndingHere = arr[0];  //It means the maximum sum till this particualr element ie when ur iterating through it
 
     for (int i = 1; i < arr.size(); i++) {
         maxEndingHere = max(arr[i], maxEndingHere + arr[i]);
