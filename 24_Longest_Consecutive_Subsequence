@@ -1,0 +1,27 @@
+nput: arr[] = [2, 6, 1, 9, 4, 5, 3]
+Output: 6
+Explanation: The consecutive numbers here are 1, 2, 3, 4, 5, 6. These 6 numbers form the longest consecutive subsquence.
+class Solution {
+  public:
+
+    // Function to return length of longest subsequence of consecutive integers.
+    int longestConsecutive(vector<int>& arr) {
+        // Your code here
+        int longest=0;
+       unordered_set<int>data(arr.begin(),arr.end());
+       for(int i : data){
+           if(data.find(i-1)==data.end()){
+               int a=i;
+               int streak=1;
+               while(data.find(a+1)!=data.end()){
+                   a++;
+                   streak++;
+               }
+               longest=max(streak,longest);
+           }
+       }
+       return longest;
+    }
+};
+TC:O(n);
+SC:O(n);
