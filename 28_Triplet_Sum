@@ -1,0 +1,74 @@
+Input: arr[] = [1, 4, 45, 6, 10, 8], target = 13 
+Output: true 
+Explanation: The triplet {1, 4, 8} sums up to 13
+
+class Solution {
+  public:
+    bool hasTripletSum(vector<int> &arr, int target) {
+        // Your Code Here
+        int n=arr.size();
+        int i=0;
+    
+        
+        sort(arr.begin(), arr.end()); //tc:O(n logn)
+       
+        for(int i=0;i<n-2;i++){ //tc:O(n)
+             int j=i+1;
+              int k=n-1;
+            while(j<k){                  //TC:O(n)
+
+            int sum=arr[i]+arr[j]+arr[k];
+            if(sum==target) return true;
+            if (sum<target) j++;
+            else k--;
+            
+            }
+        }
+        return false;
+    }
+};
+//O(N log N) + O(N * N) = O(N^2)=TC;
+//SC:O(1);
+
+
+3 SUM
+vector<vector<int>> findTriplets(vector<int>arr, int n, int K) {
+	// Write your code here.
+	vector<vector<int>> result;
+    sort(arr.begin(), arr.end());  // Step 1: Sort the array
+
+    for (int i = 0; i < n - 2; i++) {
+        // Skip duplicate elements to avoid repeated triplets
+        if (i > 0 && arr[i] == arr[i - 1]) continue;
+
+        int left = i + 1;
+        int right = n - 1;
+
+        while (left < right) {
+            int sum = arr[i] + arr[left] + arr[right];
+
+            if (sum == K) {
+                result.push_back({arr[i], arr[left], arr[right]});
+
+                // Skip duplicates for left pointer
+                while (left < right && arr[left] == arr[left + 1]) left++;
+                // Skip duplicates for right pointer
+                while (left < right && arr[right] == arr[right - 1]) right--;
+
+                // Move both pointers inward
+                left++;
+                right--;
+            }
+            else if (sum < K) {
+                left++;  // We need a bigger sum
+            }
+            else {
+                right--; // We need a smaller sum
+            }
+        }
+    }
+
+    return result;
+}
+
+
