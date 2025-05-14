@@ -1,0 +1,30 @@
+Input: arr[] = [-2, 6, -3, -10, 0, 2]
+Output: 180
+Explanation: The subarray with maximum product is {6, -3, -10} with product = 6 * (-3) * (-10) = 180.
+
+class Solution {
+  public:
+    // Function to find maximum product subarray
+    int maxProduct(vector<int> &arr) {
+        // Your Code Here
+         //Kadan's Algo
+         if(arr.empty()) return 0;
+         int mini=arr[0];
+         int maxi=arr[0];
+         int bossmax=arr[0];
+         for(int i=1;i<arr.size();i++){
+             int tempmax=maxi;
+             int tempmini=mini;
+             
+             maxi=max({arr[i],tempmax*arr[i],tempmini*arr[i]});
+             mini=min({arr[i],tempmax*arr[i],tempmini*arr[i]});
+             
+             bossmax=max(maxi,bossmax);
+             
+         }
+         return bossmax;
+    }
+};
+
+TC:O(n);
+SC:O(1);
