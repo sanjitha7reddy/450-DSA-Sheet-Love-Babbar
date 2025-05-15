@@ -1,0 +1,28 @@
+Input: x = 51, arr[] = [1, 4, 45, 6, 0, 19]
+Output: 3
+Explanation: Minimum length subarray is [4, 45, 6]
+TC:O(n);
+sc:O(1);
+
+class Solution {
+  public:
+    int smallestSubWithSum(int x, vector<int>& arr) {
+        // Your code goes here
+    int n = arr.size();
+    int length = INT_MAX; // to store the minimum length found
+    int i = 0, j = 0, s = 0;
+
+    while (j < n) {
+        s += arr[j++]; // Add arr[j] to sum and move j to the right
+
+        // While sum is greater than \ to x
+        while (s > x) {
+            length = min(length, j - i); // Try to update the minimum length
+            s -= arr[i++]; // Shrink the window from the left
+        }
+    }
+
+    // If we never found a valid subarray, return 0
+    return (length == INT_MAX) ? 0 : length;
+    }
+};
