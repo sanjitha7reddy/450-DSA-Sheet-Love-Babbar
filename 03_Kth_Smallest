@@ -1,3 +1,6 @@
+IF YOU THINK LIKE THIS THE IDEA WILL CLICK:Kth smallest element is also the kth largest elements in a group of k elements.
+
+
 class Solution {
   public:
     // arr : given array
