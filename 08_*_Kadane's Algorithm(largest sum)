@@ -34,7 +34,7 @@ int maxSubarraySum(vector<int> &arr) {
         maxSoFar = max(maxSoFar, maxEndingHere);
     }
 
-    return maxSoFar;  // this ensures 0 if all negatives
+    return maxSoFar;  
 
 
     }
