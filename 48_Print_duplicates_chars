@@ -1,0 +1,26 @@
+Input: s = "geeksforgeeks"
+Output: ['e', 4], ['g', 2], ['k', 2], ['s', 2]
+Explanation: Characters e, g, k, and s appear more than once. Their counts are shown in order of first occurrence.
+
+
+
+void printDuplicates(string s) {
+
+    // Hash map to store frequency of each character
+    unordered_map<char, int> freq;
+
+    // Count frequency of each character
+    for (char c : s) {
+        freq[c]++;
+    }
+
+    // Traverse the map and print characters with count > 1
+    for (auto it : freq) {
+        if (it.second > 1) {
+            cout << "['" << it.first << "', " << it.second << "], ";
+        }
+    }
+}
+
+TC:O(n);
+SC:O(1);
