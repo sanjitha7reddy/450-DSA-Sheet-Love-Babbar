@@ -1,0 +1,69 @@
+ok no matter what the first thing u insert into the stack will not be a closing bracket
+and also when x bracket is opened and y bracket is also opened,,,only after closing x we can close y
+ Problem statement
+
+You're given a string 'S' consisting of "{", "}", "(", ")", "[" and "]" .
+
+Return true if the given string 'S' is balanced, else return false.
+For example:
+
+'S' = "{}()".
+
+There is always an opening brace before a closing brace i.e. '{' before '}', '(' before ').
+So the 'S' is Balanced.
+
+Detailed explanation ( Input/output format, Notes, Images )
+Sample Input 1 :
+
+[()]{}{[()()]()}
+
+Sample Output 1 :
+
+Balanced
+Given a string s, composed of different combinations of '(' , ')', '{', '}', '[', ']', verify the validity of the arrangement.
+An input string is valid if:
+
+         1. Open brackets must be closed by the same type of brackets.
+         2. Open brackets must be closed in the correct order.
+
+Examples :
+
+Input: s = "[{()}]"
+Output: true
+Explanation: All the brackets are well-formed.
+
+
+class Solution {
+  public:
+    bool isBalanced(string& expression) {
+        // code here
+        stack<char>s;
+        for(int i=0;i<expression.length();i++){
+            char ch=expression[i];
+            if(ch=='('|| ch=='['|| ch=='{'){
+                s.push(ch);
+            }
+            else{
+                if(!s.empty()){
+                    char top=s.top();
+                    if((top=='(' && ch==')')||
+                      (top=='[' && ch==']')||
+                      (top=='{' && ch=='}')){
+                        s.pop();
+                    }
+                    else return false;
+                }
+                else{return false;}
+            }
+        }
+        if(s.empty()){
+            return true;
+        }
+        else return false;
+
+
+    }
+};
+
+tc:O(n);
+SC:O(n);
