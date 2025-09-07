@@ -1,0 +1,25 @@
+Given three distinct numbers a, b and c. Find the number with a value in the middle (Try to do it with minimum comparisons).
+
+Examples :
+
+Input: a = 978, b = 518, c = 300
+Output: 518
+Explanation: Since 518>300 and 518<978, so 518 is the middle element.
+
+// User function template for C++
+
+class Solution {
+  public:
+    int middle(int a, int b, int c) {
+        // code here
+        if(a>b && a<c || a<b &&a>c) return a;
+        if(b>a &&b<c || b<a && b>c) return b;
+        else return c;
+        
+    }
+};       
+Time Complexity: O(1)
+Auxiliary Space: O(1)
+
+
+
